@@ -1,0 +1,14 @@
+services:
+  mcp_servers:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mcp_servers_container
+    environment:
+      - MSF_PASSWORD=yourpassword
+      - MSF_SERVER=127.0.0.1
+      - MSF_PORT=55553
+      - MSF_SSL=false
+    ports:
+      - "8085:8085" # gc-metasploit service
+      - "8086:8086" # Nmap MCP server
