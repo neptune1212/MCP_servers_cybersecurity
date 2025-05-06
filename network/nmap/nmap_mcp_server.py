@@ -7,6 +7,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger('Nmap-MCP-Server')
 
+# Global debug flag
+debug = False
+
 # Initialize the MCP server with a name
 mcp = FastMCP("Nmap MCP Server")
 nm = nmap.PortScanner()
@@ -22,6 +25,8 @@ def execute_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The scan results.
     """
+    if debug:
+        logger.debug(f"Executing scan on target: {target} with arguments: {args}")
     return nm.scan(hosts=target, arguments=args)
 
 @mcp.tool()
@@ -36,6 +41,8 @@ def scan_top_ports(target: str, args: str = "") -> dict:
     Returns:
         dict: The scan results in JSON format.
     """
+    if debug:
+        logger.debug(f"Tool: scan_top_ports, Command: nmap {target} {args}")
     return execute_scan(target, args)
 
 @mcp.tool()
@@ -50,6 +57,8 @@ def dns_brute_force(target: str, args: str = "") -> dict:
     Returns:
         dict: The DNS brute-force scan results.
     """
+    if debug:
+        logger.debug(f"Tool: dns_brute_force, Command: nmap {target} --script dns-brute {args}")
     return execute_scan(target, f"--script dns-brute {args}")
 
 @mcp.tool()
@@ -64,6 +73,8 @@ def list_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The list scan results.
     """
+    if debug:
+        logger.debug(f"Tool: list_scan, Command: nmap {target} -sL {args}")
     return execute_scan(target, f"-sL {args}")
 
 @mcp.tool()
@@ -78,6 +89,8 @@ def os_detection(target: str, args: str = "") -> dict:
     Returns:
         dict: The OS detection results.
     """
+    if debug:
+        logger.debug(f"Tool: os_detection, Command: nmap {target} -O {args}")
     return execute_scan(target, f"-O {args}")
 
 @mcp.tool()
@@ -92,6 +105,8 @@ def version_detection(target: str, args: str = "") -> dict:
     Returns:
         dict: The version detection results.
     """
+    if debug:
+        logger.debug(f"Tool: version_detection, Command: nmap {target} -sV {args}")
     return execute_scan(target, f"-sV {args}")
 
 @mcp.tool()
@@ -106,6 +121,8 @@ def fin_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The FIN scan results.
     """
+    if debug:
+        logger.debug(f"Tool: fin_scan, Command: nmap {target} -sF {args}")
     return execute_scan(target, f"-sF {args}")
 
 @mcp.tool()
@@ -120,6 +137,8 @@ def idle_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The idle scan results.
     """
+    if debug:
+        logger.debug(f"Tool: idle_scan, Command: nmap {target} -sI {args}")
     return execute_scan(target, f"-sI {args}")
 
 @mcp.tool()
@@ -134,6 +153,8 @@ def ping_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The ping scan results.
     """
+    if debug:
+        logger.debug(f"Tool: ping_scan, Command: nmap {target} -sn {args}")
     return execute_scan(target, f"-sn {args}")
 
 @mcp.tool()
@@ -148,6 +169,8 @@ def syn_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The SYN scan results.
     """
+    if debug:
+        logger.debug(f"Tool: syn_scan, Command: nmap {target} -sS {args}")
     return execute_scan(target, f"-sS {args}")
 
 @mcp.tool()
@@ -162,6 +185,8 @@ def tcp_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The TCP scan results.
     """
+    if debug:
+        logger.debug(f"Tool: tcp_scan, Command: nmap {target} -sT {args}")
     return execute_scan(target, f"-sT {args}")
 
 @mcp.tool()
@@ -176,6 +201,8 @@ def udp_scan(target: str, args: str = "") -> dict:
     Returns:
         dict: The UDP scan results.
     """
+    if debug:
+        logger.debug(f"Tool: udp_scan, Command: nmap {target} -sU {args}")
     return execute_scan(target, f"-sU {args}")
 
 @mcp.tool()
@@ -190,6 +217,8 @@ def portscan_only(target: str, args: str = "") -> dict:
     Returns:
         dict: The port scan results.
     """
+    if debug:
+        logger.debug(f"Tool: portscan_only, Command: nmap {target} -sP {args}")
     return execute_scan(target, f"-sP {args}")
 
 @mcp.tool()
@@ -204,6 +233,8 @@ def no_portscan(target: str, args: str = "") -> dict:
     Returns:
         dict: The host discovery results.
     """
+    if debug:
+        logger.debug(f"Tool: no_portscan, Command: nmap {target} -sn {args}")
     return execute_scan(target, f"-sn {args}")
 
 @mcp.tool()
@@ -218,6 +249,8 @@ def arp_discovery(target: str, args: str = "") -> dict:
     Returns:
         dict: The ARP discovery results.
     """
+    if debug:
+        logger.debug(f"Tool: arp_discovery, Command: nmap {target} -PR {args}")
     return execute_scan(target, f"-PR {args}")
 
 @mcp.tool()
@@ -232,13 +265,21 @@ def disable_dns_resolution(target: str, args: str = "") -> dict:
     Returns:
         dict: The scan results with DNS resolution disabled.
     """
+    if debug:
+        logger.debug(f"Tool: disable_dns_resolution, Command: nmap {target} -n {args}")
     return execute_scan(target, f"-n {args}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the Nmap MCP Server")
     parser.add_argument("--host", type=str, default="localhost", help="Host for the MCP SSE server")
     parser.add_argument("--port", type=int, default=8000, help="Port for the MCP SSE server")
+    parser.add_argument("--debug", action="store_true", help="Enable debug mode")
     args = parser.parse_args()
+
+    # Set the debug flag
+    debug = args.debug
+    if debug:
+        logger.setLevel(logging.DEBUG)
 
     # Log the registered tools
     logger.info(f"Registered tools: {mcp.get_tools()}")
