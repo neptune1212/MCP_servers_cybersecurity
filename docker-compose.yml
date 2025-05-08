@@ -9,6 +9,8 @@ services:
       - MSF_SERVER=127.0.0.1
       - MSF_PORT=55553
       - MSF_SSL=false
+    volumes:
+      - ./mcp_servers:/opt/mcp_servers
     ports:
       - "8085:8085" # gc-metasploit service
       - "8086:8086" # Nmap MCP server

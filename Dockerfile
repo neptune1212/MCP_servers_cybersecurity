@@ -16,7 +16,7 @@ RUN python3 -m venv /opt/venv/nmap
 RUN /opt/venv/nmap/bin/pip install python-nmap fastmcp
 
 # Copy the Nmap MCP server script
-COPY ./network/ /opt/mcp_servers/network/
+COPY ./mcp_servers/ /opt/mcp_servers/
 
 # Copy the startup script
 COPY start.sh /start.sh
