@@ -13,7 +13,10 @@ done
 /opt/venv/metasploit/bin/gc-metasploit --transport http --host 0.0.0.0 --port 8085 &
 
 # Start the Nmap MCP server
-/opt/venv/nmap/bin/python /opt/mcp_servers/network/nmap/nmap_mcp_server.py --host 0.0.0.0 --port 8086 --debug &
+/opt/venv/mcp_servers/bin/python /opt/mcp_servers/network/nmap/nmap_mcp_server.py --host 0.0.0.0 --port 8086 --debug &
+
+# Start the Sqlmap MCP server
+/opt/venv/mcp_servers/bin/python /opt/mcp_servers/web/sqlmap/sqlmap_mcp_server.py --host 0.0.0.0 --port 8087 --debug &
 
 # Keep the container running
 tail -f /dev/null

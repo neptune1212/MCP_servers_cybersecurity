@@ -14,3 +14,4 @@ services:
     ports:
       - "8085:8085" # gc-metasploit service
       - "8086:8086" # Nmap MCP server
+      - "8087:8087" # Sqlmap MCP server
