@@ -1,9 +1,9 @@
 services:
   mcp_servers:
     build:
-      context: ./mcp-servers
+      context: ../
       dockerfile: Dockerfile
-    container_name: mcp_servers_container
+    container_name: mcp_servers
     environment:
       - MSF_PASSWORD=yourpassword
       - MSF_SERVER=127.0.0.1
@@ -12,15 +12,17 @@ services:
     volumes:
       - ../mcp_servers:/opt/mcp_servers
     networks:
-      - cyberlab-net
+      cyberlab-net:
+        ipv4_address: 172.28.0.2
 
   kali-cai:
     build:
       context: ./kali-cai
       dockerfile: Dockerfile
-    container_name: kali_cai_container
+    container_name: kali_cai
     networks:
-      - cyberlab-net
+      cyberlab-net:
+        ipv4_address: 172.28.0.3
     tty: true
     environment:
       # Cybersecurity AI (CAI) environment variables
@@ -36,11 +38,15 @@ services:
 
   metasploitable2:
     image: tleemcjr/metasploitable2
-    container_name: metasploitable2_container
+    container_name: metasploitable2
     networks:
-      - cyberlab-net
+      cyberlab-net:
+        ipv4_address: 172.28.0.4
     tty: true
 
 networks:
   cyberlab-net:
     driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
