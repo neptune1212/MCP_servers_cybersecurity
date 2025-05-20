@@ -19,7 +19,7 @@ services:
     build:
       context: ./kali-cai
       dockerfile: Dockerfile
-    container_name: kali_cai
+    container_name: kali-cai
     privileged: true
     networks:
       cyberlab-net:

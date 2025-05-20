@@ -8,20 +8,20 @@ expect "CAI>"
 
 # Load Metasploit MCP server
 send "/mcp load http://mcp_servers:8085/sse metasploit\n"
-
-# Wait for the CAI> prompt
+expect "CAI>"
+send "/mcp add metasploit redteam_agent\n"
 expect "CAI>"
 
 # Load Nmap MCP server
 send "/mcp load http://mcp_servers:8086/sse nmap\n"
-
-# Wait for the CAI> prompt
+expect "CAI>"
+send "/mcp add nmap redteam_agent\n"
 expect "CAI>"
 
 # Load Sqlmap MCP server
 send "/mcp load http://mcp_servers:8087/sse sqlmap\n"
-
-# Wait for the CAI> prompt
+expect "CAI>"
+send "/mcp add sqlmap redteam_agent\n"
 expect "CAI>"
 
 # Interact with the user

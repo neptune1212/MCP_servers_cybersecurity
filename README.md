@@ -83,6 +83,7 @@ docker-compose build
 - **network/**: Contains MCP server modules.  
 - **docker-compose.yml**: Configuration for Docker Compose.  
 - **start.sh**: Startup script for initializing services.  
+- **.devcontainer/**: Contains all files needed for the dev environment, including a dedicated README.
 
 ---
 
@@ -141,6 +142,29 @@ Configure these in `docker-compose.yml`:
 
 ---
 
+## 🧑‍💻 Development Environment
+
+You can also use a development environment with Visual Studio Code [Dev Containers](https://code.visualstudio.com/docs/devcontainers/containers).  
+All files required for the dev environment, including a dedicated README, are available in the `.devcontainer` folder.
+
+This allows you to develop, test, and run the platform in a reproducible environment.
+
+### Using the Devcontainer
+
+1. Open the project folder in VS Code.
+2. When prompted, reopen in the container (or use the "Remote-Containers: Reopen in Container" command).
+3. The devcontainer will automatically build and start all services using Docker Compose.
+4. To enter the Kali container and run the CAI tool with autoconfiguration:
+
+    ```sh
+    docker exec -it kali-cai bash
+    source cai/bin/activate && expect configure_cai.expect
+    ```
+
+See `.devcontainer/README.md` for more details.
+
+---
+
 ## 🗺️ Roadmap
 
 - Add support for Burp Suite, OpenVAS, and Wireshark.  
@@ -156,4 +180,4 @@ Configure these in `docker-compose.yml`:
 - **Nmap**: Network scanning capabilities.  
 - **Sqlmap**: SQL injection testing.  
 - **FastMCP**: MCP server framework.  
-- **Docker**: Containerization.  
+- **Docker**: Containerization.
