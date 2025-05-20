@@ -20,6 +20,7 @@ services:
       context: ./kali-cai
       dockerfile: Dockerfile
     container_name: kali_cai
+    privileged: true
     networks:
       cyberlab-net:
         ipv4_address: 172.28.0.3
