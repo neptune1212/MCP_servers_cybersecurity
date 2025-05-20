@@ -1,0 +1,28 @@
+#!/usr/bin/expect -f
+
+# Spawn the cai process
+spawn cai
+
+# Wait for the CAI> prompt
+expect "CAI>"
+
+# Load Metasploit MCP server
+send "/mcp load http://mcp-server:8085/sse metasploit\n"
+
+# Wait for the CAI> prompt
+expect "CAI>"
+
+# Load Nmap MCP server
+send "/mcp load http://mcp-server:8086/sse nmap\n"
+
+# Wait for the CAI> prompt
+expect "CAI>"
+
+# Load Sqlmap MCP server
+send "/mcp load http://mcp-server:8087/sse sqlmap\n"
+
+# Wait for the CAI> prompt
+expect "CAI>"
+
+# Interact with the user
+interact

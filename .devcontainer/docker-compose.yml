@@ -1,0 +1,46 @@
+services:
+  mcp_servers:
+    build:
+      context: ./mcp-servers
+      dockerfile: Dockerfile
+    container_name: mcp_servers_container
+    environment:
+      - MSF_PASSWORD=yourpassword
+      - MSF_SERVER=127.0.0.1
+      - MSF_PORT=55553
+      - MSF_SSL=false
+    volumes:
+      - ../mcp_servers:/opt/mcp_servers
+    networks:
+      - cyberlab-net
+
+  kali-cai:
+    build:
+      context: ./kali-cai
+      dockerfile: Dockerfile
+    container_name: kali_cai_container
+    networks:
+      - cyberlab-net
+    tty: true
+    environment:
+      # Cybersecurity AI (CAI) environment variables
+      - CAI_AGENT_TYPE=redteam_agent
+      - CAI_MODEL=openrouter/meta-llama/llama-4-maverick:free
+      - OPENAI_API_KEY=sk-xxx
+      - ANTHROPIC_API_KEY=xxx
+      - OPENROUTER_API_KEY=sk-xxx
+      - OPENROUTER_API_BASE=https://openrouter.ai/api/v1
+      - OLLAMA=
+      - OLLAMA_API_BASE="http://localhost:11434/v1"
+      - PROMPT_TOOLKIT_NO_CPR=1
+
+  metasploitable2:
+    image: tleemcjr/metasploitable2
+    container_name: metasploitable2_container
+    networks:
+      - cyberlab-net
+    tty: true
+
+networks:
+  cyberlab-net:
+    driver: bridge
