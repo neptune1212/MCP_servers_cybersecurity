@@ -102,23 +102,9 @@ Configure these in `docker-compose.yml`:
 
 ## 🛠️ Tools Provided
 
-### Nmap MCP Server
-
-- Top Ports Scan  
-- DNS Brute Force  
-- OS Detection  
-- Version Detection  
-- SYN Scan  
-- TCP Scan  
-- UDP Scan  
-
-### Sqlmap MCP Server
-
-- Basic Scan  
-- Get Databases  
-- Get Tables  
-- Get Columns  
-- Dump Data  
+- [Nmap MCP Server](network/nmap/README.md)
+- [Sqlmap MCP Server](web/sqlmap/README.md)
+- Metasploit RPC Server (see documentation in its module)
 
 ---
 
