@@ -35,7 +35,7 @@ def execute_sqlmap(target: str, args: str = "") -> dict:
         return {"output": e.stdout, "error": e.stderr}
 
 @mcp.tool()
-def basic_scan(target: str, args: str = "") -> dict:
+def sqlmap_basic_scan(target: str, args: str = "") -> dict:
     """
     Perform a basic SQL injection scan on the specified target.
 
@@ -47,11 +47,11 @@ def basic_scan(target: str, args: str = "") -> dict:
         dict: The scan results.
     """
     if debug:
-        logger.debug(f"Tool: basic_scan, Command: sqlmap -u {target} {args}")
+        logger.debug(f"Tool: sqlmap_basic_scan, Command: sqlmap -u {target} {args}")
     return execute_sqlmap(target, args)
 
 @mcp.tool()
-def get_databases(target: str, args: str = "") -> dict:
+def sqlmap_get_databases(target: str, args: str = "") -> dict:
     """
     Enumerate databases on the specified target.
 
@@ -63,11 +63,11 @@ def get_databases(target: str, args: str = "") -> dict:
         dict: The enumeration results.
     """
     if debug:
-        logger.debug(f"Tool: get_databases, Command: sqlmap -u {target} --dbs {args}")
+        logger.debug(f"Tool: sqlmap_get_databases, Command: sqlmap -u {target} --dbs {args}")
     return execute_sqlmap(target, f"--dbs {args}")
 
 @mcp.tool()
-def get_tables(target: str, database: str, args: str = "") -> dict:
+def sqlmap_get_tables(target: str, database: str, args: str = "") -> dict:
     """
     Enumerate tables in a specific database on the specified target.
 
@@ -80,11 +80,11 @@ def get_tables(target: str, database: str, args: str = "") -> dict:
         dict: The enumeration results.
     """
     if debug:
-        logger.debug(f"Tool: get_tables, Command: sqlmap -u {target} -D {database} --tables {args}")
+        logger.debug(f"Tool: sqlmap_get_tables, Command: sqlmap -u {target} -D {database} --tables {args}")
     return execute_sqlmap(target, f"-D {database} --tables {args}")
 
 @mcp.tool()
-def get_columns(target: str, database: str, table: str, args: str = "") -> dict:
+def sqlmap_get_columns(target: str, database: str, table: str, args: str = "") -> dict:
     """
     Enumerate columns in a specific table on the specified target.
 
@@ -98,11 +98,11 @@ def get_columns(target: str, database: str, table: str, args: str = "") -> dict:
         dict: The enumeration results.
     """
     if debug:
-        logger.debug(f"Tool: get_columns, Command: sqlmap -u {target} -D {database} -T {table} --columns {args}")
+        logger.debug(f"Tool: sqlmap_get_columns, Command: sqlmap -u {target} -D {database} -T {table} --columns {args}")
     return execute_sqlmap(target, f"-D {database} -T {table} --columns {args}")
 
 @mcp.tool()
-def dump_data(target: str, database: str, table: str, args: str = "") -> dict:
+def sqlmap_dump_data(target: str, database: str, table: str, args: str = "") -> dict:
     """
     Dump data from a specific table on the specified target.
 
@@ -116,7 +116,7 @@ def dump_data(target: str, database: str, table: str, args: str = "") -> dict:
         dict: The dump results.
     """
     if debug:
-        logger.debug(f"Tool: dump_data, Command: sqlmap -u {target} -D {database} -T {table} --dump {args}")
+        logger.debug(f"Tool: sqlmap_dump_data, Command: sqlmap -u {target} -D {database} -T {table} --dump {args}")
     return execute_sqlmap(target, f"-D {database} -T {table} --dump {args}")
 
 if __name__ == "__main__":
