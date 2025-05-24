@@ -18,5 +18,8 @@ done
 # Start the Sqlmap MCP server
 /opt/venv/mcp_servers/bin/python /opt/mcp_servers/web/sqlmap/sqlmap_mcp_server.py --host 0.0.0.0 --port 8087 --debug &
 
+# Start the Nikto MCP server
+/opt/venv/mcp_servers/bin/python /opt/mcp_servers/web/nikto/nikto_mcp_server.py --host 0.0.0.0 --port 8088 --debug &
+
 # Keep the container running
 tail -f /dev/null
