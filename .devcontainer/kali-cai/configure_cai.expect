@@ -24,5 +24,11 @@ expect "CAI>"
 send "/mcp add sqlmap redteam_agent\n"
 expect "CAI>"
 
+# Load Nikto MCP server
+send "/mcp load http://mcp_servers:8088/sse nikto\n"
+expect "CAI>"
+send "/mcp add nikto redteam_agent\n"
+expect "CAI>"
+
 # Interact with the user
 interact
