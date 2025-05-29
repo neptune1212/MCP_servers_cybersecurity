@@ -13,6 +13,7 @@ The MCP Servers Cybersecurity platform provides a unified interface for interact
 - **Nmap MCP Server**: Exposes Nmap's network scanning capabilities.
 - **Metasploit RPC Server**: Enables interaction with Metasploit via RPC.
 - **Sqlmap MCP Server**: Provides SQL injection testing capabilities.
+- **Nikto MCP Server**: Web server scanning.
 
 ### Planned Modules
 
@@ -64,6 +65,7 @@ docker-compose up --build
 - **Nmap MCP Server**: Port 8086  
 - **Metasploit RPC Server**: Port 8085  
 - **Sqlmap MCP Server**: Port 8087  
+- **Nikto MCP Server**: Port 8088  
 
 ### 4. Add New Modules
 
@@ -102,9 +104,10 @@ Configure these in `docker-compose.yml`:
 
 ## 🛠️ Tools Provided
 
-- [Nmap MCP Server](network/nmap/README.md)
-- [Sqlmap MCP Server](web/sqlmap/README.md)
+- [Nmap MCP Server](mcp_servers/network/nmap/README.md)
+- [Sqlmap MCP Server](mcp_servers/web/sqlmap/README.md)
 - Metasploit RPC Server (see documentation in its module)
+- [Nikto MCP Server](mcp_servers/web/nikto/README.md)
 
 ---
 
@@ -124,7 +127,7 @@ Configure these in `docker-compose.yml`:
     docker-compose logs
     ```
 
-- **Unable to connect to services**: Verify ports 8085, 8086, and 8087 are not blocked by a firewall.
+- **Unable to connect to services**: Verify ports 8085, 8086, 8087, and 8088 are not blocked by a firewall.
 
 ---
 
