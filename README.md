@@ -14,6 +14,13 @@ The MCP Servers Cybersecurity platform provides a unified interface for interact
 - **Metasploit RPC Server**: Enables interaction with Metasploit via RPC.
 - **Sqlmap MCP Server**: Provides SQL injection testing capabilities.
 - **Nikto MCP Server**: Web server scanning.
+- **WPScan MCP Server**: WordPress security scanning.
+- **Gobuster MCP Server**: Directory, DNS, and vhost brute-forcing.
+- **Dirb MCP Server**: Web content scanning.
+- **Wfuzz MCP Server**: Web application fuzzing.
+- **Nuclei MCP Server**: Fast vulnerability scanning.
+- **Commix MCP Server**: Command injection exploitation.
+- **XSSer MCP Server**: XSS vulnerability detection and exploitation.
 
 ### Planned Modules
 
@@ -62,10 +69,17 @@ docker-compose up --build
 
 ### 3. Access the Services
 
-- **Nmap MCP Server**: Port 8086  
 - **Metasploit RPC Server**: Port 8085  
-- **Sqlmap MCP Server**: Port 8087  
-- **Nikto MCP Server**: Port 8088  
+- **Nmap MCP Server**: Port 8086  
+- **Commix MCP Server**: Port 8088  
+- **XSSer MCP Server**: Port 8089  
+- **WPScan MCP Server**: Port 8090  
+- **Wfuzz MCP Server**: Port 8091  
+- **Nuclei MCP Server**: Port 8092  
+- **Nikto MCP Server**: Port 8093  
+- **Gobuster MCP Server**: Port 8094  
+- **Dirb MCP Server**: Port 8095  
+- **Sqlmap MCP Server**: Port 8096  
 
 ### 4. Add New Modules
 
@@ -108,6 +122,13 @@ Configure these in `docker-compose.yml`:
 - [Sqlmap MCP Server](mcp_servers/web/sqlmap/README.md)
 - Metasploit RPC Server (see documentation in its module)
 - [Nikto MCP Server](mcp_servers/web/nikto/README.md)
+- [WPScan MCP Server](mcp_servers/web/wpscan/README.md)
+- [Gobuster MCP Server](mcp_servers/web/gobuster/README.md)
+- [Dirb MCP Server](mcp_servers/web/dirb/README.md)
+- [Wfuzz MCP Server](mcp_servers/web/wfuzz/README.md)
+- [Nuclei MCP Server](mcp_servers/web/nuclei/README.md)
+- [Commix MCP Server](mcp_servers/web/commix/README.md)
+- [XSSer MCP Server](mcp_servers/web/xsser/README.md)
 
 ---
 

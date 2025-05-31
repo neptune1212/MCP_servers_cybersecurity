@@ -18,16 +18,58 @@ expect "CAI>"
 send "/mcp add nmap redteam_agent\n"
 expect "CAI>"
 
-# Load Sqlmap MCP server
-send "/mcp load http://mcp_servers:8087/sse sqlmap\n"
+# Load Commix MCP server
+send "/mcp load http://mcp_servers:8088/sse commix\n"
 expect "CAI>"
-send "/mcp add sqlmap redteam_agent\n"
+send "/mcp add commix redteam_agent\n"
+expect "CAI>"
+
+# Load XSSer MCP server
+send "/mcp load http://mcp_servers:8089/sse xsser\n"
+expect "CAI>"
+send "/mcp add xsser redteam_agent\n"
+expect "CAI>"
+
+# Load WPScan MCP server
+send "/mcp load http://mcp_servers:8090/sse wpscan\n"
+expect "CAI>"
+send "/mcp add wpscan redteam_agent\n"
+expect "CAI>"
+
+# Load Wfuzz MCP server
+send "/mcp load http://mcp_servers:8091/sse wfuzz\n"
+expect "CAI>"
+send "/mcp add wfuzz redteam_agent\n"
+expect "CAI>"
+
+# Load Nuclei MCP server
+send "/mcp load http://mcp_servers:8092/sse nuclei\n"
+expect "CAI>"
+send "/mcp add nuclei redteam_agent\n"
 expect "CAI>"
 
 # Load Nikto MCP server
-send "/mcp load http://mcp_servers:8088/sse nikto\n"
+send "/mcp load http://mcp_servers:8093/sse nikto\n"
 expect "CAI>"
 send "/mcp add nikto redteam_agent\n"
+expect "CAI>"
+
+# Load Gobuster MCP server
+send "/mcp load http://mcp_servers:8094/sse gobuster\n"
+expect "CAI>"
+send "/mcp add gobuster redteam_agent\n"
+expect "CAI>"
+
+# Load Dirb MCP server
+send "/mcp load http://mcp_servers:8095/sse dirb\n"
+expect "CAI>"
+send "/mcp add dirb redteam_agent\n"
+expect "CAI>"
+
+# Load Sqlmap MCP server
+send "/mcp load http://mcp_servers:8096/sse sqlmap\n"
+expect "CAI>"
+send "/mcp add sqlmap redteam_agent\n"
 expect "CAI>"
 
 # Interact with the user
