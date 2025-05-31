@@ -45,6 +45,13 @@ services:
         ipv4_address: 172.28.0.4
     tty: true
 
+  juiceshop:
+    image: bkimminich/juice-shop
+    container_name: juiceshop
+    networks:
+      cyberlab-net:
+        ipv4_address: 172.28.0.5
+
 networks:
   cyberlab-net:
     driver: bridge
