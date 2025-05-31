@@ -122,7 +122,7 @@ def sqlmap_dump_data(target: str, database: str, table: str, args: str = "") -> 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the Sqlmap MCP Server")
     parser.add_argument("--host", type=str, default="localhost", help="Host for the MCP SSE server")
-    parser.add_argument("--port", type=int, default=8000, help="Port for the MCP SSE server")
+    parser.add_argument("--port", type=int, default=8096, help="Port for the MCP SSE server")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode")
     args = parser.parse_args()
 

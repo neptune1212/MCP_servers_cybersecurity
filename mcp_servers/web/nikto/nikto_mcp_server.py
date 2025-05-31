@@ -83,7 +83,7 @@ def nikto_scan_with_plugins(target: str, plugins: str, args: str = "") -> dict:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run the Nikto MCP Server")
     parser.add_argument("--host", type=str, default="localhost", help="Host for the MCP SSE server")
-    parser.add_argument("--port", type=int, default=8088, help="Port for the MCP SSE server")
+    parser.add_argument("--port", type=int, default=8093, help="Port for the MCP SSE server")
     parser.add_argument("--debug", action="store_true", help="Enable debug mode")
     args = parser.parse_args()
 
